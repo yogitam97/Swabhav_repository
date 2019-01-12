@@ -1,0 +1,11 @@
+To initialize repository:git init
+To check commits:git log
+To check the status of current repository(modified/deleted):git status
+After executing this command if file name comes in red colour it means we haven't commited that file and if it is in the green it means it is commited.
+To add our repository to github: git add .
+To commit our repository:git commit -m add 'what changes are done'
+If you are new user you need to configure with ur email id and username of github with these commands:  git config --global user.email "you@example.com"
+  													git config --global user.name "Your Name"
+To check the particular commit: git checkout "hashcode of commit"
+ 
+
