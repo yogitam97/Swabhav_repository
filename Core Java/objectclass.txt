@@ -1,0 +1,11 @@
+Object class
+
+-registerNatives():void
++hashCode():int
++equals():boolean
+#clone():object
++toString():string
++notify():void
++notifyAll():void
++wait():void
+#finalize():void
