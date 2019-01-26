@@ -14,11 +14,15 @@ public class TestPerson {
 		p1.doWorkout();
 		printDetails(p1);
 
+		p1.calculateBMI();
+		p1.BMIcategory();
+
 	}
 
 	public static void printDetails(Person p) {
-		System.out.println("name:" + p.getName() + " age:" + p.getAge() + " gender is:" + p.getGender() + " weight:"
-				+ p.getWeight() + " height:" + p.getHeight());
+		System.out.println("name:" + p.getName() + "    age:" + p.getAge() + "    gender is:" + p.getGender()
+				+ " weight:" + p.getWeight() + "    height:" + p.getHeight() + "   BMI score:" + p.calculateBMI()
+				+ "      BMI category:" + p.BMIcategory());
 	}
 
 }
