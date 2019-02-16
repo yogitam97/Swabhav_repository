@@ -17,11 +17,7 @@ public class Person {
 	}
 
 	public Person(String name, GenderType gender, int age) {
-		this.name = name;
-		this.age = age;
-		this.gender = gender;
-		this.weight = 50;
-		this.height = 50;
+		this(name,age,gender,50,50);
 
 	}
 
