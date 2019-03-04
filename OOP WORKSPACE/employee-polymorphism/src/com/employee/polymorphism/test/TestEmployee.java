@@ -14,11 +14,13 @@ public class TestEmployee {
 		printDetails(m1);
 		printDetails(d1);
 		printDetails(a1);
+		
 	}
 	public static void printDetails(Employee e) {
-		System.out.println("emp no:"+e.getempno()+
+		System.out.println("emp no:"+e.getempno()+" Role: "+e.getClass().getSimpleName()+
 				" name:"+e.getname()+" salary:" +e.calculateTotalSalary()
 				+" date of joining:"+e.getdate());
+		System.out.println("Structure of salary:\n" +e.structureOfSalary());
 	}
 
 }

@@ -1,7 +1,5 @@
 package com.employee.polymorphism;
 
-import java.util.Date;
-
 public abstract class Employee {
 	private String name;
 	protected double basicSalary;
@@ -12,14 +10,16 @@ public abstract class Employee {
 		nextEmpno = 100;
 	}
 
-	public Employee(String name, double basicSalary,String date) {
+	public Employee(String name, double basicSalary, String date) {
 		this.name = name;
 		this.basicSalary = basicSalary;
 		this.empno = nextEmpno++;
-		this.date=date;
+		this.date = date;
 	}
 
 	abstract public double calculateTotalSalary();
+	
+	abstract public String structureOfSalary();
 
 	public int getempno() {
 		return empno;
@@ -32,6 +32,7 @@ public abstract class Employee {
 	public double getbasicSalary() {
 		return basicSalary;
 	}
+
 	public String getdate() {
 		return date;
 	}

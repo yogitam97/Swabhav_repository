@@ -19,7 +19,7 @@ public class TestService {
 		s[2].add("7273839489", "jeh@gmail.com", "jeh");
 		service.NumberOfLines();
 		String str[] = service.display();
-		String search=service.Search("abc");
+		String search=service.Search("jeh");
 		System.out.println(search);
 		
 		

@@ -9,19 +9,16 @@ public class Rectangle {
 		int area = this.width * this.height;
 		return area;
 	}
-
-	public void setWidth(int width) {
-		this.width = checkDimension(width);
+	public Rectangle(int width,int height) {
+		this.width=checkDimension(width);
+		this.height=checkDimension(height);
 	}
 
 	public int getWidth() {
 		return width;
 	}
 
-	public void setHeight(int height) {
-		this.height = checkDimension(height);
-	}
-
+	
 	public int getHeight() {
 		return height;
 	}

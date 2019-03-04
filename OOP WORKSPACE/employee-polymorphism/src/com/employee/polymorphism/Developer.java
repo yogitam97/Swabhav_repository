@@ -1,7 +1,5 @@
 package com.employee.polymorphism;
 
-import java.util.Date;
-
 public class Developer extends Employee {
 
 	public Developer(String name, double basicSalary, String date) {
@@ -12,6 +10,11 @@ public class Developer extends Employee {
 	public double calculateTotalSalary() {
 		double salary = (0.30 * basicSalary) + basicSalary;
 		return salary;
+	}
+
+	@Override
+	public String structureOfSalary() {
+		return "pa = 30%";
 	}
 
 }

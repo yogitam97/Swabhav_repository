@@ -1,13 +1,13 @@
 package com.techlabs.game;
 
 import java.util.Random;
+
 import java.util.Scanner;
 
 public class GuessNumGame {
 	Random rand = new Random();
 	Scanner sc = new Scanner(System.in);
 	private int num = rand.nextInt(100);
-	private int userNum=0;
 	private static int noOfGuesses;
 	static {
 		noOfGuesses = 0;

@@ -10,6 +10,7 @@ public class TestGame {
 		System.out.println("Enter the number:");
 		int userNum=sc.nextInt();
 		num.guessNum(userNum);
+		sc.close();
 		
 	   
 	}
