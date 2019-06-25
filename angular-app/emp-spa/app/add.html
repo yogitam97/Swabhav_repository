@@ -1,0 +1,30 @@
+
+        <h2>Add Employee</h2>
+        <form name="myForm" novalidate>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text"  class="form-control" id="name" placeholder="Enter name" name="name" ng-model="name"required>
+                <span style="color:red" ng-show="myForm.name.$dirty && myForm.name.$invalid">
+                        <span ng-show="myForm.name.$error.required">Name is required</span></span>
+            
+            </div>
+            <div class="form-group">
+                <label for="salary">Salary:</label>
+                <input type="number" ng-model="salary" class="form-control" id="salary" placeholder="Enter salary" name="salary">
+            </div>
+            <div class="form-group">
+                <select id="designation" ng-model="designation">
+                    <option value="Developer">Developer</option>
+                    <option value="Analyst">Analyst</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Tester">Tester</option>
+                </select>                
+            </div>
+            <div class="form-group">
+                <label for="date" ng-model="dateOfJoining">Date of joining:</label>
+                <input type="string" class="form-control" id="date" name="date">
+            </div>
+
+            <button type="button" ng-click="add()" class="btn btn-default">Add</button>
+        </form>
+

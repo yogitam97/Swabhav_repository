@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            (function(){
+            var dataService=function(){
+                var obj={ }
+                obj.getData=function(){
+                    var r=Math.random()*10;
+                    return r;
+                }
+                obj.getDataAsync=function(callback){
+                    setTimeout(function(){
+                        var r=Math.random()*100;
+                        callback(r)
+                    },0);  
+                }
+                obj.cubeNoAsync=function(no,resultcallback){
+                    setTimeout(function(){
+                        var cube=no*no*no;
+                        resultcallback(cube)
+                    },0)
+                }
+                return obj;
+                }();
+                var data=dataService.getData()
+                console.log(data)
+                dataService.getDataAsync(function(d){
+                    console.log("callback")
+                    console.log(d)
+                    dataService.cubeNoAsync(d,function(d){
+                    console.log("cube call back")
+                    console.log(d)
+
+                })
+                })
+               
+                console.log("end of the script")
+            
+        })();
+            </script>
+    </body>
+</html>

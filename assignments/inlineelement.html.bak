@@ -1,0 +1,21 @@
+<!DOCTYPE html> 
+<html> 
+<style> 
+	body { 
+		text-align: center; 
+	} 
+	
+	h1 { 
+		color: green; 
+	} 
+</style> 
+
+<body> 
+
+	<!-- Sapn element. -->
+	<h1>Geeks<span style="color:red"> 
+	for</span>Geeks</h1> 
+
+</body> 
+
+</html> 

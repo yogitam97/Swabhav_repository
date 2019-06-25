@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blue Ball Game</title>
+    <style>
+        button {
+            height: 100px;
+            width: 100px;
+            line-height: 50px;
+            border: 3px solid black;
+            border-radius: 50%;
+            color: black;
+            text-align: center;
+            text-decoration: none;
+            background: #464646;
+            box-shadow: 0 0 3px gray;
+            font-size: 20px;
+            font-weight: bold;
+            float: left;
+
+        }
+    </style>
+
+    <script src="angular.js"></script>
+
+</head>
+<script>
+
+    angular.module('test', [])
+
+
+        .controller('ButtonController', ['$scope', '$timeout', function ($scope, $timeout) {
+            $scope.random = Math.random();
+            $scope.blueBallNo = Math.floor($scope.random / 2 * 100);
+            $scope.number = [];
+            $scope.btnColor = [];
+            $scope.count = 5;
+            $scope.counter = 30;
+            var stopped;
+            console.log($scope.blueBallNo)
+
+            for (let i = 1; i <= 50; i++) {
+                $scope.number.push(i);
+                $scope.btnColor.push("Grey");
+            }
+            $scope.display = true
+            $scope.isDisabled = false;
+
+            $scope.startGame = function () {
+                $scope.display = false;
+                $scope.countdown();
+            }
+            $scope.countdown = function () {
+                stopped = $timeout(function () {
+                    $scope.counter--;
+                    $scope.countdown();
+                }, 1000);
+                if ($scope.counter == 00) {
+                    $timeout.cancel(stopped);
+                    alert("Timeout")
+                    return;
+                }
+            };
+            $scope.play = function (event) {
+                $scope.count--;
+                if ($scope.count == 0) {
+                    alert("You exceeded attempts")
+                    $scope.isDisabled = true;
+                    return;
+                }
+                if (parseInt(event.target.id) > $scope.blueBallNo) {
+
+                    $scope.btnColor[parseInt(event.target.id)] = "#2ECC71"
+                    this.isDisabled = true;
+                }
+                if (parseInt(event.target.id) < $scope.blueBallNo) {
+
+                    $scope.btnColor[parseInt(event.target.id)] = "crimson"
+                    this.isDisabled = true
+                }
+                if (parseInt(event.target.id) === $scope.blueBallNo) {
+
+                    $scope.btnColor[parseInt(event.target.id)] = "mediumturquoise"
+                    $timeout.cancel(stopped);
+                    alert("You won the game")
+                    $scope.isDisabled = true;
+
+                }
+
+            }
+        }])
+
+
+</script>
+
+<body ng-app="test">
+    <div ng-controller="ButtonController" style="height:300px">
+        <div ng-show="display">
+            
+            <button style="background:mediumturquoise" ng-click="startGame()">start</button><br>
+            <div style="font-family: Lucida Sans;font-size: 22">You have only 5 attempts<br>
+                You have to find blue ball<br>
+                You will have 30 seconds to play game<br>
+                Red ball means you guessed number lesser than blue ball<br>
+                Green ball means you guessed number higher than blue ball.</div>
+
+        </div>
+        <div ng-hide="display">
+            <section style="font-family: Lucida Sans">
+                <h1>Remaining time: 0:{{counter}}</h1>
+            </section>
+
+            <button ng-repeat="i in number" type="button" style="background:{{btnColor[i]}}" id="{{i}}"
+                data-ng-click="play($event)" ng-disabled="isDisabled">{{i}}</button>
+        </div>
+    </div>
+</body>
+
+</html>

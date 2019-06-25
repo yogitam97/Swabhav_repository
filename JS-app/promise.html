@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            (function(){
+            var promise=new Promise((resolve,rejected) => {
+                var sum=1+1
+                if(sum==2){
+                    resolve("Success")
+                }
+                else{
+                   rejected("Failed")
+                }
+            })
+            promise.then((message)=>{
+                console.log("this is in the then :"+message)
+            }).catch((message)=>{
+                console.log("this is in the catch :"+message)
+            })
+        })();
+            </script>
+
+    </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            function Employee(firstName,lastName){
+                this.firstName=firstName
+                this.lastName=lastName
+
+                this.display=function(){
+                    var that=this
+                    setTimeout(function(){
+                        console.log(that)
+                        console.log(that.firstName)
+                        console.log(that.lastName)
+                    },2000)
+                }
+            }
+            var e1=new Employee("abc","xyz")
+            e1.display()
+            var f1=()=>{
+                console.log("Inside arrow")
+                return "hello"
+            }
+            console.log(f1())
+
+            var f2=()=>"hello again"
+            console.log(f2())
+
+            function Student(firstName,lastName){
+                this.firstName=firstName
+                this.lastName=lastName
+
+                this.display=function(){
+                    setTimeout(()=>{
+                        console.log(this)
+                        console.log(this.firstName)
+                        console.log(this.lastName)
+                    },2000)
+                }
+            }
+            var student=new Student("yogita","more")
+            student.display()
+
+            function getData(callback){
+                var r=Math.random()*100
+                callback(r)
+            }
+
+            getData((r)=>{
+                console.log("Inside call back ")
+                console.log(r)
+            })
+            </script>
+
+    </body>
+</html>

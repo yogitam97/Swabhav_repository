@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .btn {
+            background-color: rgb(224, 35, 82);
+            /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            
+        }
+
+        .button {
+            width: 75px;
+            height: 75px;
+            line-height: 50px;
+            background-color: rgb(182, 175, 177);
+            border: 2px solid;
+            border-radius: 50%;
+            color: black;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 16px;
+            margin: 4px 2px;
+            float: left;
+        }
+
+        .democlass {
+            color: red;
+        }
+
+        .button1:hover {
+            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .wrapper {
+            display: block;
+        }
+
+        .start {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+        <div id="start" class="start">
+            <center>
+                <h1>Blue Ball Game</h1>
+            </center>
+            <center><button type="button" id="startbtn" class="btn button1">Start</button></center>
+            <p>
+                <center>You have to recognize blue balls from given 50 balls</center>
+            </p>
+            <p>
+                <center>You will only get 5 attempts to recognize blue ball</center>
+            </p>
+            <p>
+                <center>If ball shows red color it means the blue ball is present in the higher level</center>
+            </p>
+            <p>
+                <center>If ball shows green color it means blue ball is presenet in lower level</center>
+            </p>
+        </div>
+    <div class="wrapper">
+        <p id="counter"></p>
+    </div>
+    <script>
+        (function () {
+            //myFunction();
+            let elem = document.getElementById("startbtn")
+            
+            elem.addEventListener("click", myFunction)
+
+            function myFunction() {
+
+                document.getElementById('start').style.display="none";
+                
+                var count = 5;
+                var random = Math.random();
+                var blueballno = Math.floor(random / 2 * 100);
+                console.log(blueballno)
+
+                 //50 buttons
+                var docFrag = document.createDocumentFragment();
+
+                for (var i = 1; i <= 50; i++) {
+                    var ele = document.createElement('button');
+                    ele.setAttribute('id', 'i')
+                    ele.setAttribute('class', 'button')
+                    ele.addEventListener("click", play)
+                    ele.innerHTML = i;
+                    docFrag.appendChild(ele);
+
+                } 
+                document.body.appendChild(docFrag);
+                countdown();
+            
+                //Countdown
+                function countdown() {
+                var seconds = 60;
+                function tick() {
+                    var counter = document.querySelector("#counter");
+                    seconds--;
+                    counter.innerHTML = "Time Remaining: " + "0 :" + (seconds < 10 ? "0 " : "") + String(seconds);
+                    if (seconds > 0) {
+                        setTimeout(tick, 1000);
+                    }
+                    else {
+                        alert("Game over")
+                    }
+                }
+                tick();
+                }
+                
+            
+
+
+            //play function
+            function play() {
+                var button = this.innerHTML;
+                count--;
+                console.log(button + " button is clicked")
+
+                if (button < blueballno) {
+                    this.style.background = "red"
+                }
+                if (button > blueballno) {
+                    this.style.background = "green"
+                }
+                if (button == blueballno) {
+                    this.style.background = "blue"
+                    count=0;
+                    alert("You won the game!!")
+                }
+                checkRemainingAttempts(count)
+            }
+
+            //Check remaining attempts
+            function checkRemainingAttempts(count) {
+                if (count == 0) {
+                    var ele = document.getElementsByClassName("button")
+                    for (var i = 0; i < ele.length; i++)
+                        ele[i].disabled = true;
+                }
+            }
+            }
+            
+               
+
+          
+                
+
+        })();
+    </script>
+</body>
+
+</html>

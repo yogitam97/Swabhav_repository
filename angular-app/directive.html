@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+    .footer{
+        bottom: 0;
+        position:fixed;
+    }
+    </style>
+    <script src="angular.js"></script>
+    <script>
+        var app = angular.module("myApp", [])
+            .controller("directoryController", ['$scope', function ($scope) {
+                $scope.students = [{
+                id: 1,
+                name: "Onkar",
+                cgpa: 5.2
+            }, {
+                id: 2,
+                name: "Deepak",
+                cgpa: 8.2
+            }
+                , {
+                id: 3,
+                name: "Yogita",
+                cgpa: 6.2
+
+            },
+            {
+                id: 4,
+                name: "Shekhar",
+                cgpa: 9.2
+
+            },
+            {
+                id: 5,
+                name: "Abhishek",
+                cgpa: 8.9
+
+            }
+            ]
+        
+
+            }])
+            .directive('myAurionproHeader', function () {
+                return {
+                    template: '<center><header><h1>Aurionpro solutions</h1></header></center>'
+                }
+            })
+            .directive('studentTableData',function(){
+                return{
+                    template:'<center><table><tr><th>ID</th><th>Name</th><th>CGPA</th></tr><tr ng-repeat="x in students"> <td>{{ x.id }}</td><td>{{ x.name }}</td><td>{{ x.cgpa }}</td></tr></center>'
+                }
+            })
+            .directive("myAurionproFooter", function () {
+                return {
+                    template: '<h3><div class="footer">This is footer<div></h3>'
+                }
+            })
+
+
+ 
+    </script>
+    <title>Document</title>
+</head>
+
+<body ng-app="myApp">
+    <div ng-controller="directoryController">
+        <my-aurionpro-header></my-aurionpro-header>
+        <student-table-data></student-table-data>
+        <center><my-aurionpro-footer></my-aurionpro-footer></center>
+    </div>
+
+
+</body>
+
+</html>

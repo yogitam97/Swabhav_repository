@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<script src="jquery.js"></script>
+<script>
+    $(document).ready(() => {
+        $('#inputTxt').keyup(function () {
+            $("#textDiv").text($(this).val().toUpperCase());
+        })
+        $('#font').keyup(function () {
+            $('#textDiv').css({ "font-size": "" + $(this).val() + "px" })
+        })
+        
+        let colors = ['red', 'green', 'blue', 'yellow']
+        var fgcolor = document.querySelector('#fgColor')
+        let str = ""
+        let selectTags = '<select id="foreground">'
+        let endTags = "</select>"
+        for (var i = 0; i < colors.length; i++) {
+            str = str + '<option id="color_id"' + i + ">" + colors[i] + "</option>"
+        }
+        str = selectTags + str + endTags
+        fgcolor.innerHTML = str
+
+        var bgcolor = document.querySelector('#bgColor')
+        let strbg = ""
+        let selectTagsbg = '<select id="background">'
+        let endTagsbg = "</select>"
+        for (var i = 0; i < colors.length; i++) {
+            strbg = strbg + '<option id="color_id"' + i + ">" + colors[i] + "</option>"
+        }
+        strbg = selectTagsbg + strbg + endTagsbg
+        bgcolor.innerHTML = strbg
+
+        $('#foreground').change(function () {
+            var color = $('#foreground').val();
+            console.log(color)
+            $('#textDiv').css("color", color);
+        })
+        $('#background').change(function () {
+            var color = $('#background').val();
+            console.log(color)
+            $('#textDiv').css("background-color" , color);
+        })
+    })
+</script>
+
+<body>
+    <label>Text:</label><input id="inputTxt" type="text" />
+    <label>Font-size</label><input id="font" type="text" />
+
+    <label>ForeGround Color:</label>
+    <p id="fgColor"></p>
+    <label>BackGround Color:</label>
+    <p id="bgColor"></p>
+
+    <center>
+        <div id="textDiv"></div>
+    </center>
+
+</body>
+
+</html>

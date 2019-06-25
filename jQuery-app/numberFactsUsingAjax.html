@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="jQuery.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .loader {
+            border: 5px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 5px solid blue;
+            border-bottom: 5px solid blue;
+            width: 25px;
+            height: 25px;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+
+
+        }
+
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <center><label id="numberLabel">Number:</label><input id="number" type="number" />
+        <button type="button" id="Btn">Show Fact</button>
+        <button id="displayLog" style="display: none">Display Previous Search</button>
+        <div class="loader" id="loader" style="display: none"></div>
+        <p id="facts" style="color: seagreen"></p>
+        <p id="log_para"></p>
+    </center>
+</body>
+<script>
+    (function () {
+        $(document).ready(function () {
+
+            $('#Btn').click(function () {
+
+                $('#loader').show();
+                var num=$('#number').val();
+                setTimeout(function () {
+                    $.ajax({
+                        url: "http://numbersapi.com/" + num,
+                        success: (function (response) {
+                            $('#loader').hide();
+                            $('#facts').html(response)
+                        }),
+                        failure: (function () {
+                            $('#loader').hide();
+                            console.log("error occured")
+                        })
+                    })
+                }, 5000)
+            })
+        })
+    })();
+</script>
+
+
+</html>

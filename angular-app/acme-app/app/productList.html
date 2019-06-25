@@ -1,0 +1,31 @@
+<div style="border:1px groove  rgb(17, 53, 160); border-radius: 5px;border-top-width: thin">
+    <p style="background-color: rgb(17, 53, 160);color:white;font-family:verdana;font-size:20px">
+        Products List</p>
+    <div class="col-xs-6">
+        <div class="left-inner-addon">
+            Filter by:<i class="glyphicon glyphicon-search"></i>
+            <input type="text" ng-model="search" placeholder="Search item" /></div>
+            <div ng-show="search"><strong><h3>Fileterd by:{{search}}</h3></strong></div>
+    </div><br><br>
+
+    <table class="table">
+        <th><button type="button" class="btn btn-primary" ng-show="show" ng-click="changestatus()">Show image</button>
+            <button type="button" class="btn btn-primary" ng-hide="show" ng-click="changestatus()">Hide image</button>
+        </th>
+        <th>Product</th>
+        <th>Code</th>
+        <th>Awailable</th>
+        <th>Price</th>
+        <th>5 star rating</th>
+        <tr ng-repeat="x in products | filter:search" >
+            <td><img src="{{x.imageUrl}}" width="120" height="120" ng-hide="show"></td>
+            <td ng-value="name"><a href="#!/productDetails"  ng-click="displayDetails($index)">{{x.productName}}</a></td>
+            <td>{{x.productCode}}</td>
+            <td>{{x.releaseDate}}</td>
+            <td>{{x.price}}</td>
+            <td>
+                <star ng-bind-html="x.starRating|starFilter"></star>
+                {{x.starRating}}</td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Math Async Service</title>
+</head>
+<script src="angular.js"></script>
+<script>
+    angular.module('MathApp', [])
+        .factory('MathService', ['$q', '$log', function ($q, $log) {
+            $log.info("Inside math service")
+            let obj = {};
+            obj.isEven = function (no) {
+                console.log(no)
+                return $q((resolve, reject) => {
+                    if (no % 2 == 0) {
+                        resolve(true);
+                    }
+                    else {
+                        reject({ error: "NOT_EVEN" })
+                    }
+                })
+            }
+            return obj;
+        }])
+        .controller('MainController', ['$scope', 'MathService', function ($scope, MathService) {
+            $scope.evenNumber = async function () {
+                $scope.result = await MathService.isEven($scope.no)
+                console.log($scope.result)
+                $scope.$apply();
+            }
+
+            
+
+        }])
+</script>
+
+<body ng-app="MathApp">
+    <div ng-controller="MainController">
+        <h1>Even Number Controller</h1>
+        Number:<input type="text" ng-model="no" /><br>
+        <button type="button" ng-click="evenNumber()">Show</button>
+        {{ result }}
+    </div>
+</body>
+
+</html>

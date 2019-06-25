@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Async Await</title>
+</head>
+<script>
+   
+    function cubeEvenNo(no){
+        return new Promise((resolve,reject)=>{
+            if(no%2==0){
+                resolve(no*no*no)
+            }
+            else reject({message:'NOT_EVEN_NO'})
+        })
+    }
+    async function testCubeEvenNo(){
+        let resp1=await cubeEvenNo(2)
+        console.log(resp1)
+        let resp2=await cubeEvenNo(resp1)
+        console.log(resp2)
+    }
+    testCubeEvenNo()
+    console.log("end of the script")
+
+</script>
+<body>
+    
+</body>
+</html>

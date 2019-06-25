@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Number Facts</title>
+</head>
+<script src="angular.js"></script>
+<script>
+    angular.module('NumberFactApp', [])
+        .factory('FactService', ['$q', '$log', '$http', function ($q, $log, $http) {
+            $log.info("inside of number service")
+            var obj = {}
+            obj.generateFact = function (number) {
+                return $q((resolve, reject) => {
+                    if (number != 0) {
+                        $http.get("http://numbersapi.com/" + number)
+                            .then(function (response) {
+                                resolve(response.data)
+                            })
+                    } else {
+                        reject: ({ error: "You failed" })
+                    }
+                })
+            }
+            return obj;
+        }])
+        .controller('FactController', ['$scope', 'FactService', function ($scope, FactService) {
+            $scope.displayFact = function () {
+                console.log($scope.number)
+                FactService.generateFact($scope.number)
+                    .then((r) => {
+                        console.log(r)
+                        $scope.result = r
+                    })
+            }
+        }])
+</script>
+
+<body ng-app="NumberFactApp">
+    <center>
+        <div ng-controller="FactController">
+            <input type="number" ng-model="number" />
+            <button type="button" id="showFactbtn" ng-click="displayFact()">Show Fact</button>
+            <div style="font-family: Lucida Sans;font-size:26;color:crimson">{{result}}</div>
+        </div>
+    </center>
+</body>
+
+</html>

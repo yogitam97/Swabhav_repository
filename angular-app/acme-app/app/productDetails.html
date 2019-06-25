@@ -1,0 +1,23 @@
+<div style="border:1px groove  rgb(17, 53, 160); border-radius: 5px;border-top-width: thin">
+    <p style="background-color: rgb(17, 53, 160);color:white;font-family:verdana;font-size:20px">
+        Products Details: {{ productDetails.productName }}</p>
+
+        
+        <div class="row">
+        <div class="col-xs-6 ">
+            <p>Name:  {{productDetails.productName }}<br>
+            Code:  {{productDetails.productCode}}<br>
+            Description:  {{productDetails.description}}<br>
+            Availability:  {{productDetails.releaseDate}}<br>
+            Price:  {{productDetails.price}}<br>
+            Star rating:  <star ng-bind-html="productDetails.starRating|starFilter"></star> {{productDetails.starRating}}<br>
+            <button style="float:bottom" class="btn btn-default glyphicon glyphicon-menu-left" ng-click="returnBack()">Back</button></p>
+        </div>
+        <div class="col-xs-5">
+            <img src="{{productDetails.imageUrl}}" width="250">
+            
+        </div>
+        
+        
+    
+    </div>

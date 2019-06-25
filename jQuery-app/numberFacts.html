@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<script src="jQuery.js"></script>
+<body>
+    <center><label id="numberLabel">Number:</label><input id="number" type="number" />
+    <button type="button" id="Btn">Show Fact</button>
+    <button id="displayLog">Display Previous Search</button>
+    <p id="facts" style="color: seagreen"></p>
+    <p id="log_para"></p></center>
+</body>
+<script>
+    (function () {
+        var logArray=[];
+        var newDataArray=[];
+        var counter=0;
+        var str = ""
+        var btnFact = document.querySelector('#Btn')
+        btnFact.addEventListener("click", (()=> {
+            logArray = localStorage.getItem("log");
+            var no = document.querySelector('#number').value;
+            getFacts(no)
+            .then( (r)=> {
+                    counter++;
+                    $('#facts').html(r);
+                    if(counter==1){
+                        newDataArray.push(logArray); 
+                        newDataArray.push("<li>"+r+"</li>"); 
+                    }
+                    else{
+                        newDataArray.push("<li>"+r+"</li>");
+                    }
+                    
+                    localStorage.setItem('log',newDataArray);
+                });
+               
+        }));
+    
+        function getFacts(no) {
+            return new Promise(function (resolve, reject) {
+                var no = document.querySelector('#number').value;
+                var xhr = new XMLHttpRequest();
+                if (no != 0) {
+                    xhr.onreadystatechange = (()=> {
+                        if (xhr.readyState == 4) {
+                            if (xhr.status == 200) {
+                                resolve(xhr.responseText)
+                                document.getElementById("facts").innerHTML=xhr.responseText
+                            }
+                        }
+                    })
+                    xhr.open('GET', 'http://numbersapi.com/' + no)
+                    xhr.send()
+                }
+                else {
+                    reject("Error occured")
+                }
+            })
+        }
+        $('#displayLog').click(()=>{
+            logArray = localStorage.getItem("log"); 
+            $('#log_para').html(logArray);
+        });
+
+    })();
+</script>
+
+
+</html>

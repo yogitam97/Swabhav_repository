@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wiki</title>
+</head>
+<style>
+    section {
+        font-size: 30px;
+    }
+</style>
+<script>
+    function locationHashChanged() {
+        if (location.hash === '#places') {
+            console.log("You're visiting places section!");
+        }
+        if (location.hash === '#history') {
+            console.log("You're visiting history section!");
+        }
+        if (location.hash === '#people') {
+            console.log("You're visiting famous people section!");
+        }
+        if (location.hash === '#politics') {
+            console.log("You're visiting politics section!");
+        }
+    }
+
+    window.onhashchange = locationHashChanged;
+</script>
+
+<body>
+    <a href="#places">Places</a><br>
+    <a href="#history">History</a><br>
+    <a href="#people">Famous people</a><br>
+    <a href="#politics">Politics</a><br>
+    <section id="places">
+        <h3>Places</h3>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Sed vel tortor sed elit convallis scelerisque non a libero.
+        Duis eget dolor tincidunt, ullamcorper risus quis, vulputate tellus.
+        Praesent placerat malesuada leo, a lacinia enim euismod a.
+        Pellentesque neque sapien, pellentesque in massa facilisis, iaculis interdum dui. In hac habitasse platea
+        dictumst. Vivamus a risus facilisis, sagittis purus sed, accumsan nisl. Quisque dapibus lectus id elementum
+        dictum. Etiam tincidunt elit in volutpat lacinia. Vestibulum ut ullamcorper nulla. In lobortis tincidunt metus
+        quis ultricies. Sed sed pellentesque mi. Quisque gravida elit ac est rhoncus convallis. Vestibulum eleifend
+        dictum nisi, eu aliquet est laoreet ac. Etiam ac nulla vitae quam posuere fermentum vitae sed diam.
+        Pellentesque neque sapien, pellentesque in massa facilisis, iaculis interdum dui. In hac habitasse platea
+        dictumst. Vivamus a risus facilisis, sagittis purus sed, accumsan nisl. Quisque dapibus lectus id elementum
+        dictum. Etiam tincidunt elit in volutpat lacinia. Vestibulum ut ullamcorper nulla. In lobortis tincidunt metus
+        quis ultricies. Sed sed pellentesque mi. Quisque gravida elit ac est rhoncus convallis. Vestibulum eleifend
+        dictum nisi, eu aliquet est laoreet ac. Etiam ac nulla vitae quam posuere fermentum vitae sed diam.
+    </section>
+    <section id="history">
+        <h3>History</h3>
+        Maecenas quam nisl, euismod a tortor in, blandit porttitor sapien.
+        Sed auctor felis a lectus blandit mattis. Vivamus nec est ex.
+        Interdum et malesuada fames ac ante ipsum primis in faucibus.
+        Nulla in feugiat erat, eu dapibus erat.
+        Vivamus et mi risus. Quisque tincidunt lorem justo, eget placerat leo faucibus vitae. Aenean sed ante eu diam
+        tempor lobortis. Sed ut quam finibus, aliquet arcu at, viverra leo. Pellentesque eget laoreet ligula. Sed at est
+        rhoncus, fringilla nunc at, facilisis dolor. Nullam bibendum orci faucibus malesuada vestibulum. Praesent
+        iaculis tempus volutpat. Sed ut libero diam. Ut elementum porttitor elit, at eleifend quam condimentum vel.
+        Mauris blandit ipsum ut magna placerat, at imperdiet eros maximus. Vestibulum mattis ultrices enim, sit amet
+        lobortis urna bibendum lobortis.
+        Pellentesque neque sapien, pellentesque in massa facilisis, iaculis interdum dui. In hac habitasse platea
+        dictumst. Vivamus a risus facilisis, sagittis purus sed, accumsan nisl. Quisque dapibus lectus id elementum
+        dictum. Etiam tincidunt elit in volutpat lacinia. Vestibulum ut ullamcorper nulla. In lobortis tincidunt metus
+        quis ultricies. Sed sed pellentesque mi. Quisque gravida elit ac est rhoncus convallis. Vestibulum eleifend
+        dictum nisi, eu aliquet est laoreet ac. Etiam ac nulla vitae quam posuere fermentum vitae sed diam.
+    </section>
+    <section id="people">
+        <h3>Famous people</h3>
+        In vitae eleifend urna. Ut tristique felis sit amet euismod accumsan.
+        In hac habitasse platea dictumst. Ut auctor lorem vel gravida sagittis.
+        Fusce finibus elementum sem, et sollicitudin erat aliquam et.
+        Donec a turpis nec eros ultricies ultricies.
+        Sed hendrerit nisl nulla, id aliquet lectus suscipit ac.Aenean aliquet tortor id lectus congue porta. In dapibus
+        condimentum lacinia. Etiam blandit ligula nunc, ac venenatis nisl fermentum sed. Sed pretium enim quis porttitor
+        iaculis. Mauris vulputate facilisis purus, quis dictum tellus pharetra at. Duis venenatis dolor a nisi
+        tincidunt, sed tincidunt mauris laoreet. Donec porttitor risus eget dapibus volutpat. Maecenas egestas et erat
+        id bibendum. Suspendisse nec dui a dui convallis elementum. Quisque non dapibus tortor, eu efficitur ipsum.
+        Pellentesque accumsan vestibulum enim, id congue mauris pretium vitae. Aliquam vitae finibus metus. Aenean
+        efficitur eleifend pulvinar. Nulla urna est, dapibus sit amet venenatis at, vestibulum id justo.
+        Pellentesque neque sapien, pellentesque in massa facilisis, iaculis interdum dui. In hac habitasse platea
+        dictumst. Vivamus a risus facilisis, sagittis purus sed, accumsan nisl. Quisque dapibus lectus id elementum
+        dictum. Etiam tincidunt elit in volutpat lacinia. Vestibulum ut ullamcorper nulla. In lobortis tincidunt metus
+        quis ultricies. Sed sed pellentesque mi. Quisque gravida elit ac est rhoncus convallis. Vestibulum eleifend
+        dictum nisi, eu aliquet est laoreet ac. Etiam ac nulla vitae quam posuere fermentum vitae sed diam.
+    </section>
+    <section id="politics">
+        <h3>Politics</h3>
+        Sed auctor felis a lectus blandit mattis.
+        Vivamus nec est ex.
+        Interdum et malesuada fames ac ante ipsum primis in faucibus.
+        Nulla in feugiat erat, eu dapibus erat.
+        Pellentesque neque sapien, pellentesque in massa facilisis, iaculis interdum dui. In hac habitasse platea
+        dictumst. Vivamus a risus facilisis, sagittis purus sed, accumsan nisl. Quisque dapibus lectus id elementum
+        dictum. Etiam tincidunt elit in volutpat lacinia. Vestibulum ut ullamcorper nulla. In lobortis tincidunt metus
+        quis ultricies. Sed sed pellentesque mi. Quisque gravida elit ac est rhoncus convallis. Vestibulum eleifend
+        dictum nisi, eu aliquet est laoreet ac. Etiam ac nulla vitae quam posuere fermentum vitae sed diam.
+    </section>
+</body>
+
+</html>

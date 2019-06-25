@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            (function () {
+            function getData(callback) {
+                console.log("getting data")
+                console.log("Taking some time")
+                var r = Math.random(10) * 10;
+                if (r >= 5) {
+                    callback({
+                        result: "success " + r
+                    })
+                }
+                else {
+                    callback({
+                        error: "Number is less than 5"
+                    })
+                }
+            }
+            getData(handleResponseData)
+            function handleResponseData(data) {
+                console.log(data)
+                if (data.error) {
+                    console.log("error" + data.error)
+                }
+                else {
+                    console.log("result found: " + data.result)
+                }
+            }
+        })();
+        </script>
+    </body>
+</html>

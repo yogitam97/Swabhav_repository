@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <script>
+        var Car = function () {
+            this.name = 'Audi';
+            this.color = 'blue';
+            this.speed = 180;
+        };
+        Car.prototype.setName = function (name) {
+            this.name = name;
+            return this;
+        };
+        Car.prototype.setColor = function (color) {
+            this.color = color;
+            return this;
+        };
+        Car.prototype.setSpeed = function (speed) {
+            this.speed = speed;
+            return this;
+        };
+        Car.prototype.display = function () {
+            alert(this.name + ' ' + this.color + ' ' + this.speed);
+            return this;
+        };
+        var car = new Car()
+        car.setName('BMW').setColor('black').setSpeed(90).display()
+    </script>
+</body>
+
+</html>

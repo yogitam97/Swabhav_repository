@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Employee service</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  
+
+
+  <script src="../angular.js"></script>
+  <script src="../angular-route.js"></script>
+  <script src="app/app.js"></script>
+  <script src="app/empService.js"></script>
+  <script src="app/addController.js"></script>
+  <script src="app/homeController.js"></script>
+  <script src="app/editController.js"></script>
+  <script src="app/loginController.js"></script>
+  <style>
+    .bs-example{
+        margin: 20px;
+        font-size: 25px;
+      }
+  </style>
+</head>
+
+<body ng-app="emp-spa">
+  <div class="container">
+    <div ng-controller="loginController">
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" ng-show="show" >{{username|uppercase}}</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="#!/">Home</a></li>
+        <li ng-show="status"><a href="#!/add">Add</a></li>
+        <!-- <li ng-show="flag"><a href="#!/edit">Edit</a></li> -->
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-hide="show"><a href="#!/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li ng-show="show" ng-click="logout()"><a href="#!/"><span class="glyphicon glyphicon-log-out" ></span>Logout</a></li>
+      </ul>
+
+    </div>
+  </nav>
+  
+
+  
+    <div ng-view></div>
+ 
+  <div class="bs-example"> 
+    <div class="alert alert-info" ng-hide="show">
+      <strong>Info!</strong> To add or edit employee details you need to log in.
+    </div>
+  </div></div>
+</div>
+</body>
+
+</html>

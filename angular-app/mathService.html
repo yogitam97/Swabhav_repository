@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Service</title>
+</head>
+<script src="angular.js"></script>
+<script>
+    angular.module('MyApp', [])
+
+        .factory('MathService', ['$log', function ($log) {
+            $log.info("Inside Math Service");
+            var obj = {};
+            obj.generatePrime = function (no) {
+                var primeNums = [];
+                let flag;
+                for (let i = 2; i <= no; i++) {
+                    flag = 0;
+                    for (let j = 2; j <= i / 2; j++) {
+                        if (i % j == 0) {
+                            flag = 1;
+                            break;
+                        }
+                    }
+                    if (flag == 0) {
+                        primeNums.push(i)
+                    }
+                }
+                return primeNums;
+            }
+            obj.cubeEvenNo = function (no) {
+                var evenNums = [];
+                for (var i = 0; i <= no; i++) {
+                    if (i % 2 == 0) {
+                        evenNums.push(i)
+                    }
+                }
+                return evenNums;
+            }
+            return obj;
+        }])
+
+        .controller('PrimeNoController', ['$scope', 'MathService', function ($scope, MathService) {
+            console.log("inside controller")
+
+            $scope.display = function () {
+                $scope.array = MathService.generatePrime($scope.no);
+                console.log($scope.array)
+            }
+
+        }])
+        .controller('EvenNoController', ['$scope', 'MathService', function ($scope, MathService) {
+
+            $scope.display = function () {
+                $scope.evenArray = MathService.cubeEvenNo($scope.no);
+                console.log($scope.evenArray)
+            }
+        }])
+
+</script>
+
+<body ng-app="MyApp">
+    <div ng-controller="PrimeNoController">
+        <h1>Prime Number Controller</h1>
+        Number:<input type="text" ng-model="no" /><br>
+        <button type="button" ng-click="display()">Show</button>
+        <div ng-repeat="x in array">
+            {{x}}
+        </div>
+    </div>
+    <div ng-controller="EvenNoController">
+        <h1>Even Number Controller</h1>
+        Number:<input type="text" ng-model="no" /><br>
+        <button type="button" ng-click="display()">Show</button>
+
+        <div ng-repeat="x in evenArray">
+            {{x}}
+        </div>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,5 @@
+CREATE TABLE Student(
+id int primary key,
+name varchar(20),
+cgpa float
+);

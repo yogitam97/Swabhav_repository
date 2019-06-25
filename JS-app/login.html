@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <form action="auth.php" method=POST name="loginform" >
+        Name:<input type="text" id="name" name="name"></input>
+        <span id="requireTextbox" style="color:red"></span><br>
+        Password:<input type="password" id="password" name="password"></input>
+        <span id="requirePassword" style="color:red"></span><br>
+        <button type="submit" id="submit">Submit</button>
+    </form>
+    <script>
+        (function () {
+            let name=document.loginform.name.value;
+            let password=document.loginform.password.value;
+            
+            var btn = document.querySelector("#submit")
+            btn.addEventListener("click", validation)
+            function validation() {
+                if (name == "" && password == "") {
+                    document.querySelector("#requireTextbox").innerHTML="Required";
+                    document.querySelector("#requirePassword").innerHTML="Required";
+                    //alert("All fields are required");
+                    return event.preventDefault();
+                }
+
+            }
+        })();
+
+    </script>
+</body>
+
+</html>

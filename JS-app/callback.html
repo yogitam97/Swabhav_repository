@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            (function (){
+                function addition(a,b,callback){
+                    document.write(`${a}+${b}=${a+b}`+"<br>")
+                    callback();
+                }
+                function display(){
+                    document.write("this is callback function")
+                }
+                addition(5,6,display);
+            })();
+        </script>
+    </body>
+</html>

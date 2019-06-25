@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+<form ng-app="" name="myForm" ng-init="name = 'yogita@gmail.com'">
+	Enter mail :
+	 <input type="email" name="address" ng-model="name" required>
+	<p>Valid : {{myForm.address.$valid}}</p>
+	<p>Invalid:{{myForm.address.$invalid}}</p>
+	<p>Dirty:{{myForm.address.$dirty}}
+		<p>Pristine:{{myForm.address.$pristine}}</p>
+</form>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="taskKeeper.css">
+    <title>Task Keeper App</title>
+</head>
+
+<body>
+    <div class="container">
+        <p>
+            <h3 id="task-keeper">
+                <center>Task Keeper App</center>
+            </h3>
+
+            <label for="new-task">Add Task</label><br><input id="new-task" type="text"><br><button
+                id="addbtn">Add</button>
+            <label for="priority">set Priority</label><br><input id="high" name="high" type="radio" class="checkmark" />
+            <span>High</span>
+            <input id="mid" name="mid" type="radio" class="checkmark" />
+            <span>Medium</span>
+            <input id="low" name="low" type="radio" class="checkmark" />
+            <span>Low</span>
+
+        </p>
+        <label for="tasks">Tasks to be completed</label>
+        <ul id="listOftasks">
+            <li>Tasks</li>
+        </ul>
+        <p><button type="button" id="sortbtn">Sort </button>
+        <select id="sortby" class="sortby">
+            <option id="highToLow" value="high">High to Low</option>
+            <option id="lowToHigh" value="low">Low to High</option>
+        </select>
+            </p>
+        <script src="taskKeeper.js"></script>
+</body>
+
+</html>

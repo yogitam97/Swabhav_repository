@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <button id="myBtn" class="btn btn-primary" value="source">Source</button>
+
+    <script>
+        (function () {
+            document.querySelector("#myBtn").addEventListener("click", function listener() {
+                console.log("Button is clicked");
+            })
+            document.querySelector("#myBtn").addEventListener("click", function listener2() {
+                console.log("Button is clicked");
+            })
+        })();
+    </script>
+</body>
+
+</html>

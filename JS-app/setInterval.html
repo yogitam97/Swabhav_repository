@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <p>This will be executed so many times</p>
+    <p id="myFunction"></p>
+
+    <script>
+        var myVar = setInterval(myTimer, 1000);
+        function myTimer() {
+
+            document.getElementById("myFunction").innerHTML += "<p>Hi</p>";
+        } 
+    </script>
+
+</body>
+</html>

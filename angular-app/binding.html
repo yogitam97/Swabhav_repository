@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Binding</title>
+</head>
+<script src="angular.js"></script>
+<script>
+    var app=angular.module("bindingApp",[]);
+    app.controller("studentCotroller", function ($scope) {
+        $scope.student={
+            name:"Yogita",
+            cgpi:7.08,
+            id:101
+        }
+    })
+</script>
+<body ng-app="bindingApp">
+    <div ng-controller="studentCotroller">
+    <section>
+        <h1>One way</h1>
+        <div>
+            Name:{{student.name}}<br>
+            Cgpi:{{student.cgpi}}<br>
+            ID:{{student.id}}
+        </div>
+    </section>
+    <section>
+        <h1>Two way</h1>
+        <div >
+            Name:<input type="text" ng-model="student.name"><br>
+            Cgpi:<input type="text" ng-model="student.cgpi"><br>
+            ID:<input type="text" ng-model="student.id"><br>
+        </div>
+    </section>
+    <section>
+            <h1>One Time</h1>
+            <div>
+                Name:{{::student.name}}<br>
+                Cgpi:{{::student.cgpi}}<br>
+                ID:{{::student.id}}
+            </div>
+        </section>
+</div>  
+</body>
+</html>

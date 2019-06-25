@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<style>
+    .btn {
+        background-color: rgb(224, 35, 82);
+        /* Green */
+        border: none;
+        border-radius: 5%;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+
+    }
+</style>
+
+<body>
+    <center>
+        <button type="button" id="load" class="btn button1">Load</button>
+        <p id="frame"><iframe id="iframe" height="400" width="800"></iframe></p>
+    </center>
+
+    <script>
+        document.querySelector('#load').addEventListener("click", function () {
+            var frame = document.querySelector('#iframe')
+            frame.src = "index.html"
+        })
+    </script>
+</body>
+
+</html>
