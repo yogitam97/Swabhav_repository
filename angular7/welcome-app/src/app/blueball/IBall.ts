@@ -1,0 +1,3 @@
+interface IBall{
+    color:String;
+}

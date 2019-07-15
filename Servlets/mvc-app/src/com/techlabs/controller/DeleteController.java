@@ -40,11 +40,7 @@ public class DeleteController extends HttpServlet {
 		} else {
 			RequestDispatcher view = request.getRequestDispatcher("LoginController");
 			view.forward(request, response);
-			
-//			out.println("<script type=\"text/javascript\">");
-//			out.println("alert('Please login first');");
-//			out.println("location='login.jsp';");
-//			out.println("</script>");
+	
 		}
 
 		out.close();

@@ -34,18 +34,14 @@ public class EditCustomerController extends HttpServlet {
 		if (session.getAttribute("username") != null) {
 			String name = (String) session.getAttribute("name");
 			Customer cs = CustomerService.getInstance().getCustomerById(id);
-
+			
 			request.setAttribute("customerOBJ", cs);
 			RequestDispatcher view = request.getRequestDispatcher("edit.jsp");
 			view.forward(request, response);
 		} else {
 			RequestDispatcher view = request.getRequestDispatcher("LoginController");
 			view.forward(request, response);
-			
-//			out.println("<script type=\"text/javascript\">");
-//			out.println("alert('Please login first');");
-//			out.println("location='login.jsp';");
-//			out.println("</script>");
+
 			
 		}
 
@@ -76,6 +72,7 @@ public class EditCustomerController extends HttpServlet {
 		c1.setLastName(lname);
 		c1.setDob(date);
 		c1.setCard(card);
+		CustomerService.getInstance().editCustomer(c1);
 		response.sendRedirect("customer");
 	}
 }

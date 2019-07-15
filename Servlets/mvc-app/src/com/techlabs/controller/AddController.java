@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,7 +27,7 @@ public class AddController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CardType card;
 	private Customer customer;
-	String url = "AddCustomer";
+	String id;
 
 	public AddController() {
 		super();
@@ -34,37 +35,23 @@ public class AddController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
-
-		HttpSession session = request.getSession(false);
-		request.setAttribute("url", url);
-		System.out.println(request.getParameter("url"));
-		if (session.getAttribute("username") != null) {
+		System.out.println("inside get method");
 			RequestDispatcher view = request.getRequestDispatcher("AddCustomer.jsp");
 			view.forward(request, response);
-		} else {
-			RequestDispatcher view = request.getRequestDispatcher("LoginController");
-			view.forward(request, response);
-			
-			
-//			out.println("<script type=\"text/javascript\">");
-//			out.println("alert('Please login first');");
-//			out.println("location='login.jsp';");
-//			out.println("</script>");
-
+	
 		}
-
-		out.close();
-	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		doGet(request,response);
 		PrintWriter out = response.getWriter();
-
+		
 		String firstName = request.getParameter("firstName").toString();
 		String lastName = request.getParameter("lastName").toString();
-		String id = request.getParameter("id");
+		if( request.getParameter("id") == null) {
+			id=UUID.randomUUID().toString();
+		}
+		
 		double balance = Double.parseDouble(request.getParameter("balance"));
 		String date = request.getParameter("dob").toString();
 		System.out.println(firstName);
@@ -85,17 +72,20 @@ public class AddController extends HttpServlet {
 		if (CustomerService.getInstance().getCustomerById(id) != null) {
 			Customer c1 = CustomerService.getInstance().getCustomerById(id);
 			c1.setBalance(balance);
-
+			c1.setId(id);
 			c1.setFirstName(firstName);
 			c1.setLastName(lastName);
 			c1.setDob(date);
-			c1.setCard(card);
+			if(card.equals(null)) {
+				c1.setCard(CardType.NULL);
+			}
+			
 			return;
 		}
-		customer = new Customer(firstName, lastName, date, balance, card);
+		customer = new Customer(id,firstName, lastName, date, balance, card);
+		System.out.println(id+" "+firstName+""+lastName+""+date+""+balance+""+card);
 		CustomerService.getInstance().addCustomers(customer);
 		response.sendRedirect("customer");
-		System.out.println("reached to the end");
 	}
 
 }

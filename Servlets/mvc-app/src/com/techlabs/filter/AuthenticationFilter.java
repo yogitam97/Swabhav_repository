@@ -16,36 +16,28 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class AuthenticationFilter
  */
-@WebFilter({ "/AuthenticationFilter", "/AddCustomer", "/EditCustomer" })
+@WebFilter({ "/AuthenticationFilter","/AddCustomer" })
 public class AuthenticationFilter implements Filter {
 
-    /**
-     * Default constructor. 
-     */
     public AuthenticationFilter() {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see Filter#destroy()
-	 */
 	public void destroy() {
 		// TODO Auto-generated method stub
 	}
 
-	/**
-	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
-	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
 
 HttpServletRequest httpRequest = (HttpServletRequest) request;
 		String url="";
 		String reqURL= httpRequest.getRequestURI();
+		System.out.println("url is: "+reqURL);
 		String[] arrayStr = reqURL.split("/");
 		url = url + arrayStr[2];
-		if( httpRequest.getParameter("ID")!=null) {
-			url = url +"?ID=" +httpRequest.getParameter("ID");
+		if( httpRequest.getParameter("Id")!=null) {
+			url = url +"?Id=" +httpRequest.getParameter("Id");
 		}
 		HttpServletResponse httpResponse = (HttpServletResponse )response;
 		HttpSession session = httpRequest.getSession();
@@ -55,16 +47,13 @@ HttpServletRequest httpRequest = (HttpServletRequest) request;
 		if(isLoggedIn) {
 			chain.doFilter(request, response);
 			return;	 
-	 }
+		}
 		  httpRequest.setAttribute("url", url);
+		  session.setAttribute("url", url);
 	      RequestDispatcher view= httpRequest.getRequestDispatcher("LoginController");
 	      view.forward(request, response);
-		chain.doFilter(request, response);
 	}
 
-	/**
-	 * @see Filter#init(FilterConfig)
-	 */
 	public void init(FilterConfig fConfig) throws ServletException {
 		// TODO Auto-generated method stub
 	}

@@ -1,0 +1,27 @@
+<section align="center" class="jumbrotron">
+    <div class="container">
+        <h3>Name is:{{student.name}}</h3>
+    <h3>CGPA is:{{student.cgpa}}</h3>
+<h3>Location is:{{student.location}}</h3>
+<h3>Profile pic:</h3><img [src]="student.profilepic" [style.width]="width" [style.height]="height"/>
+    </div>
+    <!-- <div class="container">
+        Name is:{{student['name']}}
+        CGPA is:<p [innerHtml]='student.cgpa' [style.background-color]="ConvertCGPAToColor"></p>
+        Location is:<p [innerHtml]='student.location' ></p>
+        Profile pic:<img [src]="student.profilepic" [style.width]="width" [style.height]="height"/>
+    </div> -->
+    <div align="center"><input type="button" class="btn btn-warning" (click)="loadCourses($event)" value="loadCourses"/>
+    <ul>
+        <li *ngFor="let course of courses">
+            {{course.course_id}}|{{course.name}}
+        </li>
+    </ul>
+</div>
+<div>
+    <h3>Two way binding</h3>
+    {{student.name}}<br>
+    <!-- <input type="text" [ngModel]="student.name" (ngModelChange) ='nameChange($event)'> -->
+    <input type="text" [(ngModel)]="student.name" />
+</div>
+</section>

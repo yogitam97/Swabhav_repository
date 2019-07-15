@@ -18,7 +18,7 @@
 		Date of birth:<input type="text" name="dob" value="<%=cust.getDob()%>"><br>
 		Balance:<input type="number" name="balance" value="<%=cust.getBalance()%>"><br>
 		Card type:<input type="radio" value="<%=cust.getCard()%>" name="myRadio">DEBIT
-		<input type="radio" value="<%=cust.getCard().toString()%>" name="myRadio">CREDIT<br>
+		<input type="radio" value="<%=cust.getCard()%>" name="myRadio">CREDIT<br>
 
 		<button type="submit">Edit</button>
 

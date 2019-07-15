@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<package name="main" extends="struts-default">
+<action name="display" class="com.techlabs.actions.ContactAction">
+<result name="success">
+/view/contacts.jsp
+</result>
+</action>
+<action name="add" class="com.techlabs.actions.AddAction">
+<result name="success">
+/view/add.jsp
+</result>
+</action>
+<action name="addForm" class="com.techlabs.actions.AddAction">
+<result name="input">/view/add.jsp</result>
+<result name="success" type="redirect">display</result>
+</action>
+<action name="delete" class="com.techlabs.actions.DeleteAction">
+<result name="success" type="redirect">display</result>
+</action>
+<action name="edit" class="com.techlabs.actions.EditAction">
+<result name="success">/view/edit.jsp</result>
+</action>
+<action name="editForm" class="com.techlabs.actions.EditAction">
+<result name="input">/view/edit.jsp</result>
+<result name="success" type="chain">display</result>
+</action>
+</package>
+</struts>

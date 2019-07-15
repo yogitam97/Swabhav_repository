@@ -12,8 +12,8 @@ public class Customer {
 	private double balance;
 	private CardType card;
 
-	public Customer( String firstName, String lastName, String dob, double balance, CardType card) {
-		this.id = UUID.randomUUID().toString();
+	public Customer(String id, String firstName, String lastName, String dob, double balance, CardType card) {
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dob = dob;

@@ -1,0 +1,30 @@
+<style>
+    .button {
+  background-color: gainsboro; 
+  border: 1px;
+  border-color: black;
+  color: black;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius:50%;
+}
+</style>
+<div *ngIf="show" class="container"><br>
+<button (click)='startTimer()' class="btn btn-primary">Start game</button>
+<h3>You have only 5 attemps</h3>
+<h3>You have to find blue ball</h3>
+<h3>You have 30 seconds to play</h3>
+</div>
+<div *ngIf="!show" class="container">
+    <p>{{timeLeft}} Seconds Left....</p>
+    <input type="button" class="button" *ngFor="let ball of arrayButtons(50); let i=index;" (click)="play(i)" 
+    [style.background-color]="setColor[i]" value="{{i}}" [disabled]='isDisable'>{{i}}
+</div>
+<div *ngIf="isReplay">
+    <button (click)="playAgain()"><span class="btn btn-warning glyphicon glyphicon-repeat"></span>Play Again</button>
+</div>

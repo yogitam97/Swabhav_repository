@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<package name="main" extends="struts-default">
+
+   
+<action name="home" class="com.techlabs.actions.HomeAction">
+<result name="success">
+/view/home.jsp
+</result>
+</action>
+<action name="session" class="com.techlabs.actions.SessionAction">
+<result name="success">
+/view/session.jsp
+</result>
+</action>
+<action name="login" class="com.techlabs.actions.LoginAction">
+<result name="success">
+/view/login.jsp
+</result>
+</action>
+
+<action name="doLogin"
+class="com.techlabs.actions.LoginAction" method="doLogin">
+<result name="true">/view/LoginStatus.jsp</result>
+<result name="false">/view/LoginStatus.jsp</result>
+</action>
+
+<action name="validate" class="com.techlabs.actions.LoginAction">
+			<result name="input">/view/login.jsp</result>
+			<result name="success">/view/LoginStatus.jsp</result>
+		</action>
+
+</package>
+</struts>

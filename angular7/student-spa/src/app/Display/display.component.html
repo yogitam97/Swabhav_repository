@@ -1,0 +1,41 @@
+<style>
+    th {
+        text-align: center
+    }
+</style>
+Search:<input type="text" [(ngModel)]='search' name='search' placeholder="search student..">
+<h3>Students Info <span class="badge" id="count">{{length}}</span></h3>
+<div class="container">
+    <table class="table table-striped">
+        <thead class="thead thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>RollNo</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Date</th>
+                <th>Email</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let s of result|filter : 'name' : search">
+                <td>{{s.id}}</td>
+                <td>{{s.rollNo}}</td>
+                <td>{{s.name}}</td>
+                <td>{{s.age}}</td>
+                <td>{{s.isMale|genderPipe}}</td>
+                <td>{{s.date}}</td>
+                <td>{{s.email}}</td>
+                <td><button [routerLink]="['/edit',s.id]"
+                        class="btn btn-success glyphicon glyphicon-pencil"></button></td>
+                <td><button (click)="deleteData(s.id)"
+                        class="btn btn-danger glyphicon glyphicon-trash"></button></td>
+    
+            </tr>
+        </tbody>
+    </table>
+   
+</div>
